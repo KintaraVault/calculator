@@ -10,7 +10,8 @@ using namespace cutefish::ui;
 void addCalculatorColors(ColorMixer& mixer, const Theme& theme)
 {
     const bool dark = theme.darkMode;
-    mixer[CalculatorColor::WindowBackground] = (dark ? Color::rgb(0x000000) : Color::rgb(0xE8E8E8)).withAlpha(0.95);
+    mixer[CalculatorColor::WindowBackground] =
+            wallpaperTinted((dark ? Color::rgb(0x000000) : Color::rgb(0xE8E8E8)).withAlpha(0.95));
 
     const Color key = dark ? Color::rgb(0x5A5A5A) : Color::rgb(0xF7F7F7);
     mixer[CalculatorColor::Key] = key;
