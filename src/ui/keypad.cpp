@@ -21,7 +21,6 @@ static constexpr int kRows = 5;
 // The gap between keys and the margin around them, as shares of a key's diameter.
 static constexpr double kKeySpacing = 31.0 / 216;
 static constexpr double kKeypadMargin = 58.0 / 216;
-static constexpr double kRimWidth = 4.0 / 216;
 
 namespace {
 
@@ -141,15 +140,7 @@ void KeypadButton::paint(Painter& painter)
     const RectF plate{device.x / scale - offset.x, device.y / scale - offset.y, device.width / scale,
                       device.height / scale};
 
-    // The rim shows at the top and the bottom and fades out towards the sides.
-    const Color fill = color(base);
-    const Color edge = color(rim);
-    const LinearGradient gradient{{plate.x, plate.y},
-                                  {plate.x, plate.bottom()},
-                                  {{0, edge}, {0.3, fill}, {0.7, fill}, {1, edge}}};
-    painter.fillRoundedRect(plate, plate.width / 2, gradient);
-    const double inset = std::max(1.0, std::round(plate.width * kRimWidth * scale)) / scale;
-    painter.fillEllipse(plate.adjusted(inset, inset, -inset, -inset), fill);
+    painter.drawRoundedRect(plate, {plate.width / 2}, color(base), 1 / scale, color(rim));
 }
 
 void KeypadButton::setKeyDown(bool down)

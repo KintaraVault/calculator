@@ -14,7 +14,7 @@ enum class CalculatorColor : uint16_t {
     WindowBackground = uint16_t(cutefish::ui::ColorId::ApplicationFirst),
     // The digit keys.
     Key,
-    // The edge lit at the top and the bottom of a key.
+    // The key's hairline edge.
     KeyRim,
     KeyHovered,
     KeyPressed,

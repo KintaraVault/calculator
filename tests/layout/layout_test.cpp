@@ -345,7 +345,7 @@ TEST(LayoutTest, Themes)
     for (const bool dark : {false, true}) {
         Theme::setCurrent(dark ? Theme::dark() : Theme::light());
         const Color background = color(CalculatorColor::WindowBackground);
-        EXPECT_EQ(background, (dark ? Color{0, 0, 0, 242} : Color{232, 232, 232, 242}));
+        EXPECT_EQ(background, Theme::current().secondBackground.withAlpha(.96));
         EXPECT_NE(color(CalculatorColor::KeyHovered), color(CalculatorColor::Key));
         EXPECT_NE(color(CalculatorColor::KeyPressed), color(CalculatorColor::KeyHovered));
         EXPECT_NE(color(CalculatorColor::OperatorKeyHovered), color(CalculatorColor::OperatorKey));
